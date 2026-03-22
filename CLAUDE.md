@@ -14,7 +14,7 @@
 
 ## Conventions
 
-- Format with ruff (line-length=120, Python 3.12)
+- Format with ruff (line-length=120, Python 3.14)
 - Type hints encouraged
 - Config changes go in `src/config.py` only
 - Experiment logs go in `logs/` via `src/evaluate.py` only
