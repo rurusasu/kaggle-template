@@ -19,7 +19,6 @@ from src.dataset import load_train
 from src.evaluate import get_cv_splitter, log_experiment, metric_fn
 from src.features import build_features
 from src.model import predict, save_model, train
-from src.submit import create_submission
 from src.utils import Timer, set_seed
 
 
@@ -70,13 +69,16 @@ def main():
     oof_df = pd.DataFrame({"id": df["id"], "oof_pred": oof_preds})
     oof_df.to_csv(cfg.oof_dir / "oof_predictions.csv", index=False)
 
-    log_experiment(cfg, {
-        "experiment": f"seed{cfg.seed}_folds{cfg.n_folds}",
-        "seed": cfg.seed,
-        "n_folds": cfg.n_folds,
-        "fold_scores": fold_scores,
-        "mean_score": float(mean_score),
-    })
+    log_experiment(
+        cfg,
+        {
+            "experiment": f"seed{cfg.seed}_folds{cfg.n_folds}",
+            "seed": cfg.seed,
+            "n_folds": cfg.n_folds,
+            "fold_scores": fold_scores,
+            "mean_score": float(mean_score),
+        },
+    )
 
 
 if __name__ == "__main__":

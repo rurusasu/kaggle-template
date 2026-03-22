@@ -2,7 +2,6 @@ import csv
 import json
 
 import numpy as np
-import pandas as pd
 
 from src.config import Config
 from src.evaluate import log_experiment, metric_fn

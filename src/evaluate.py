@@ -1,6 +1,6 @@
 import csv
 import json
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 import numpy as np
 from sklearn.metrics import accuracy_score
@@ -22,7 +22,7 @@ def get_cv_splitter(cfg: Config):
 def log_experiment(cfg: Config, result: dict) -> None:
     """Save experiment result as JSON and append to CSV in logs/."""
     cfg.logs_dir.mkdir(parents=True, exist_ok=True)
-    timestamp = datetime.now(tz=timezone.utc).strftime("%Y%m%d_%H%M%S")
+    timestamp = datetime.now(tz=UTC).strftime("%Y%m%d_%H%M%S")
     result["timestamp"] = timestamp
 
     # JSON (detailed, per-experiment)

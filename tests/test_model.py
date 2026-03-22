@@ -1,5 +1,3 @@
-import pickle
-
 from src.model import load_model, save_model
 
 
